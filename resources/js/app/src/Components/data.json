@@ -1,0 +1,61 @@
+{
+  "typeAgrement": "BTP",
+  "representant": {
+    "nom": "dabonne",
+    "prenom": "hoda",
+    "numero_cni": "40",
+    "telephone": "234561235",
+    "email": "dabonne@2gmail.com",
+    "dateNaissance": "2023-01-12",
+    "lieuxResidance": "Bingerville",
+    "lieuxNaissance": "Bingerville"
+  },
+  "employers": [
+    {
+      "numero_cni": "11437",
+      "prenom": "Ibrahim",
+      "fonction": "controller",
+      "niveau": "BAC",
+      "diplome": "Licence",
+      "status": "Permanent",
+      "telephone": "234567899",
+      "email": "Kon2nee@gmail.com",
+      "dateNaissance": "2002-04-22",
+      "lieuxNaissance": "Bingerville",
+      "lieuxResidance": "Bobo"
+    }
+  ],
+  "entreprise": {
+    "adresse": "corefd",
+    "telephone": "24567234",
+    "raison_sociale": "Bien",
+    "status": "sdfdfd",
+    "sige_social": "fdffezf",
+    "capital_social": 12000000,
+    "date_enregistrement": "2002-02-10",
+    "numero_enregistrement": "90EEDN34",
+    "lieu_inscription_commerce": "BOBO",
+    "numero_employeur_cnss": "23ZEDF",
+    "categorie": 1,
+    "attestation_capacite_financiere": "DKJLJLL",
+    "ville": "BOBO",
+    "region": "HAUT"
+  },
+  "materiels": [
+    {
+      "numero": "2922JJD10",
+      "immatriculation": "00001",
+      "libele": "Machine"
+    },
+    {
+      "numero": "2922JJD10",
+      "immatriculation": "00002",
+      "libele": "Machine"
+    },
+    {
+      "numero": "2922JJD10",
+      "immatriculation": "00003",
+      "libele": "Machine"
+    }
+  ]
+}
