@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "https://arch.edic-municipalities.com/"
+const URL = "https://arch.edic-municipalities.com/api/"
 
 const request = axios.create({
     baseURL: URL,
