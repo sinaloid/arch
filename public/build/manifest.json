@@ -1,0 +1,126 @@
+{
+  "resources/js/app.css": {
+    "file": "assets/app-49dd8eb1.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "assets": [
+      "assets/eyeHide-ecdaa4a2.png",
+      "assets/eye-fa5ef6e1.png",
+      "assets/arch-dfd5e1b5.png",
+      "assets/supp-039a2676.png",
+      "assets/home-4ed7d2c9.png",
+      "assets/employe-ba0d19ba.png",
+      "assets/rendezvous-a36ef162.png",
+      "assets/agenda-b9f31eec.png",
+      "assets/armoiries-805c209f.png",
+      "assets/edit-eb484962.png",
+      "assets/trie-ea7df758.png",
+      "assets/delete-1cbd82bc.png",
+      "assets/back-b5048a81.png",
+      "assets/next-a142b8bc.png",
+      "assets/profile-3e1cc753.png",
+      "assets/delete-638018b0.png",
+      "assets/files-icon-f30f6b0a.png"
+    ],
+    "css": [
+      "assets/app-49dd8eb1.css"
+    ],
+    "file": "assets/app-ff4d9a82.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/src/assets/images/arch.png": {
+    "file": "assets/arch-dfd5e1b5.png",
+    "src": "resources/js/src/assets/images/arch.png"
+  },
+  "resources/js/src/assets/images/armoiries.png": {
+    "file": "assets/armoiries-805c209f.png",
+    "src": "resources/js/src/assets/images/armoiries.png"
+  },
+  "resources/js/src/assets/images/files-icon.png": {
+    "file": "assets/files-icon-f30f6b0a.png",
+    "src": "resources/js/src/assets/images/files-icon.png"
+  },
+  "resources/js/src/assets/images/icons/back.png": {
+    "file": "assets/back-b5048a81.png",
+    "src": "resources/js/src/assets/images/icons/back.png"
+  },
+  "resources/js/src/assets/images/icons/delete.png": {
+    "file": "assets/delete-1cbd82bc.png",
+    "src": "resources/js/src/assets/images/icons/delete.png"
+  },
+  "resources/js/src/assets/images/icons/edit.png": {
+    "file": "assets/edit-eb484962.png",
+    "src": "resources/js/src/assets/images/icons/edit.png"
+  },
+  "resources/js/src/assets/images/icons/eye.png": {
+    "file": "assets/eye-fa5ef6e1.png",
+    "src": "resources/js/src/assets/images/icons/eye.png"
+  },
+  "resources/js/src/assets/images/icons/eyeHide.png": {
+    "file": "assets/eyeHide-ecdaa4a2.png",
+    "src": "resources/js/src/assets/images/icons/eyeHide.png"
+  },
+  "resources/js/src/assets/images/icons/next.png": {
+    "file": "assets/next-a142b8bc.png",
+    "src": "resources/js/src/assets/images/icons/next.png"
+  },
+  "resources/js/src/assets/images/icons/profile.png": {
+    "file": "assets/profile-f9fe37bb.png",
+    "src": "resources/js/src/assets/images/icons/profile.png"
+  },
+  "resources/js/src/assets/images/icons/trie.png": {
+    "file": "assets/trie-ea7df758.png",
+    "src": "resources/js/src/assets/images/icons/trie.png"
+  },
+  "resources/js/src/assets/images/login.jpg": {
+    "file": "assets/login-89491746.jpg",
+    "src": "resources/js/src/assets/images/login.jpg"
+  },
+  "resources/js/src/assets/imgs/agenda.png": {
+    "file": "assets/agenda-b9f31eec.png",
+    "src": "resources/js/src/assets/imgs/agenda.png"
+  },
+  "resources/js/src/assets/imgs/delete.png": {
+    "file": "assets/delete-638018b0.png",
+    "src": "resources/js/src/assets/imgs/delete.png"
+  },
+  "resources/js/src/assets/imgs/employe.png": {
+    "file": "assets/employe-ba0d19ba.png",
+    "src": "resources/js/src/assets/imgs/employe.png"
+  },
+  "resources/js/src/assets/imgs/home.png": {
+    "file": "assets/home-4ed7d2c9.png",
+    "src": "resources/js/src/assets/imgs/home.png"
+  },
+  "resources/js/src/assets/imgs/msg.png": {
+    "file": "assets/msg-158068f2.png",
+    "src": "resources/js/src/assets/imgs/msg.png"
+  },
+  "resources/js/src/assets/imgs/patient.png": {
+    "file": "assets/patient-113bb5db.png",
+    "src": "resources/js/src/assets/imgs/patient.png"
+  },
+  "resources/js/src/assets/imgs/profile.png": {
+    "file": "assets/profile-3e1cc753.png",
+    "src": "resources/js/src/assets/imgs/profile.png"
+  },
+  "resources/js/src/assets/imgs/rendezvous.png": {
+    "file": "assets/rendezvous-a36ef162.png",
+    "src": "resources/js/src/assets/imgs/rendezvous.png"
+  },
+  "resources/js/src/assets/imgs/supp.png": {
+    "file": "assets/supp-039a2676.png",
+    "src": "resources/js/src/assets/imgs/supp.png"
+  },
+  "resources/js/src/assets/imgs/user.png": {
+    "file": "assets/user-7cc155a5.png",
+    "src": "resources/js/src/assets/imgs/user.png"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-67dcdfd2.css",
+    "isEntry": true,
+    "src": "resources/sass/app.scss"
+  }
+}
