@@ -27,10 +27,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
-      username: username,
-      password: password,
-    });
+    
     setLoginFail(false)
     request
       .post(endPoint.login, {
@@ -48,7 +45,7 @@ const Login = () => {
           token: res.data.access_token,
           cni:""
         });
-          isAuth();
+        return navigate("/dashboard/");
       })
       .catch((error) => {
         setLoginFail(true);
