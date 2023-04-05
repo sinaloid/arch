@@ -3,7 +3,7 @@ const endPoint = {
 
     "login":"login",
     "users":"user",
-    "categories":"categorie",
+    "categorie":"categorie",
     "maison":"maison",
 
 }

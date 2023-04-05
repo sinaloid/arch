@@ -1,116 +1,176 @@
-const InputField = ({ type, label, name, value, options, onChange }) => {
-  const handleChange = (event) => {
-    //console.log(event.target.name, event.target.value);
-    onChange(event.target.name, event.target.value);
-  };
-
-  const handleChangeImage = (event) => {
-    onChange(event.target.name, event.target.files[0]);
-  }
-
+const InputField = ({ type, formik, label, placeholder, name, children, options = []}) => {
   if (type === "text") {
     return (
-      <div className="col-md-12">
-        <div className="form-floating mb-3">
-          <input
-            className="form-control form-control-sm form-floating-height"
-            type="text"
-            id={name}
-            name={name}
-            value={value}
-            placeholder={label}
-            onChange={handleChange}
-          />
-          <label htmlFor={name} className="form-label mb-4">
+      <div className="mb-3">
+        {label && (
+          <label className="form-label" htmlFor={name}>
             {label}
           </label>
-        </div>
+        )}
+        <input
+          className="form-control"
+          type="text"
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values[name]}
+        />
+        {
+            children
+        }
+        {formik.touched[name] && formik.errors[name] ? (
+          <div className="text-danger">{formik.errors[name]}</div>
+        ) : null}
       </div>
     );
   }
 
-  if (type === "date") {
+  if (type === "email") {
     return (
-      <div className="col-md-12">
-        <div className="form-floating mb-3">
-          <input
-            className="form-control form-control-sm form-floating-height"
-            type="date"
-            id={name}
-            name={name}
-            value={value}
-            placeholder={label}
-            onChange={handleChange}
-          />
-          <label htmlFor={name} className="form-label mb-4">
+      <div className="mb-3">
+        {
+            label && <label className="form-label" htmlFor={name}>
             {label}
           </label>
-        </div>
+        }
+        <input
+          className="form-control"
+          type="email"
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values[name]}
+        />
+        {formik.touched[name] && formik.errors[name] ? (
+          <div className="text-danger">{formik.errors[name]}</div>
+        ) : null}
+      </div>
+    );
+  }
+
+  if (type === "password") {
+    return (
+      <div className="mb-3">
+        {
+            label && <label className="form-label" htmlFor={name}>
+            {label}
+          </label>
+        }
+        <input
+          className="form-control"
+          type="password"
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values[name]}
+        />
+        {
+            children
+        }
+        {formik.touched[name] && formik.errors[name] ? (
+          <div className="text-danger">{formik.errors[name]}</div>
+        ) : null}
       </div>
     );
   }
 
   if (type === "file") {
     return (
-      <div className="col-md-12">
-        <div className="form-floating mb-3">
-          <input
-            className="form-control form-control-sm form-floating-height"
-            type="file"
-            id={name}
-            name={name}
-            //value={value}
-            placeholder={label}
-            onChange={handleChangeImage}
-          />
-          <label htmlFor={name} className="form-label mb-4">
+      <div className="mb-3">
+        {
+            label && <label className="form-label" htmlFor={name}>
             {label}
           </label>
-        </div>
+        }
+        <input
+          className="form-control"
+          type="file"
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          onChange={e => formik.setFieldValue(name, e.target.files[0])}
+          onBlur={formik.handleBlur}
+          //value={formik.values[name]}
+        />
+        {
+            children
+        }
+        {formik.touched[name] && formik.errors[name] ? (
+          <div className="text-danger">{formik.errors[name]}</div>
+        ) : null}
       </div>
     );
   }
 
   if (type === "select") {
     return (
-      <div className="col-md-12 mb-3">
+      <div className="mb-3">
+        {label && (
+          <label className="form-label" htmlFor={name}>
+            {label}
+          </label>
+        )}
         <select
           className="form-select"
+          type="text"
           id={name}
           name={name}
-          value={value}
-          onChange={handleChange}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values[name]}
         >
-          <option>{"Selectionnez une " + label}</option>
-          {options.map((option, idx) => (
-            <option key={idx} value={option}>
-              {option}
-            </option>
-          ))}
+          <option value={""}>{placeholder}</option>
+          {
+            options.map((data,idx) => {
+
+              return <option key={idx} value={data.id}>{data.nom}</option>
+            })
+          }
         </select>
+        {
+            children
+        }
+        {formik.touched[name] && formik.errors[name] ? (
+          <div className="text-danger">{formik.errors[name]}</div>
+        ) : null}
       </div>
     );
   }
-  if (type === "select2") {
+
+  if (type === "textarea") {
     return (
-      <div className="col-md-12 mb-3">
-        <select
-          className="form-select"
+      <div className="mb-3">
+        {label && (
+          <label className="form-label" htmlFor={name}>
+            {label}
+          </label>
+        )}
+        <textarea
+          className="form-control"
           id={name}
           name={name}
-          value={value}
-          onChange={handleChange}
-        >
-          <option>{"Selectionnez une " + label}</option>
-          {options.map(({id, libele}, idx) => (
-            <option key={idx} value={id}>
-              {libele}
-            </option>
-          ))}
-        </select>
+          placeholder={placeholder}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values[name]}
+          rows="4"
+        ></textarea>
+        {
+            children
+        }
+        {formik.touched[name] && formik.errors[name] ? (
+          <div className="text-danger">{formik.errors[name]}</div>
+        ) : null}
       </div>
     );
   }
+
   return null;
 };
 

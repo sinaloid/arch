@@ -9,7 +9,7 @@ import employe from "./assets/imgs/employe.png";
 import rendv from "./assets/imgs/rendezvous.png";
 import agenda from "./assets/imgs/agenda.png";
 import patient from "./assets/imgs/patient.png";
-import profile from "./assets/images/armoiries.png"
+import profile from "./assets/images/arch.png"
 import Categorie from "./pages/Categorie";
 import Settings from "./pages/Settings";
 import Home from "./pages/Home";
@@ -18,6 +18,7 @@ import { deleteUser } from "./services/storage";
 import { AppContext, initialUser } from "./services/context";
 import Demande from "./pages/Demande";
 import Reglement from "./pages/Reglement";
+import Maison from "./pages/Maison";
 
 const Dashboard = () => {
   const authCtx = useContext(AppContext);
@@ -33,7 +34,7 @@ const Dashboard = () => {
       console.log(`connexion échoué, isAuth`);
       console.log(user);
 
-      //return navigate("/");
+      return navigate("/");
     } else {
       console.log("isAuth true");
     }
@@ -45,15 +46,15 @@ const Dashboard = () => {
   };
   return (
     <>
-      <header className="container-fluid navbar navbar-dark bg-white sticky-top flex-md-nowrap px-0 py-4 shadow1 d-md-none">
+      <header className="container-fluid navbar navbar-dark bg-white sticky-top flex-md-nowrap px-0 py-4 shadow d-md-none">
         <a
           className="navbar-brand1 bg-white col-md-3 col-lg-2 me-0 px-3"
           href="#"
         >
-          <img width="20px" src={profile} alt="" />
+          <img width="40px" src={profile} alt="" />
         </a>
         <button
-          className="navbar-toggler p-2 position-absolute mx-0 my-4 d-md-none collapsed"
+          className="navbar-toggler bg-primary p-2 position-absolute mx-0 my-4 d-md-none collapsed"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#sidebarMenu"
@@ -116,13 +117,13 @@ const Dashboard = () => {
                       data-bs-toggle="collapse"
                       data-bs-target="#sidebarMenu.show"
                     >
-                      Catégorie
+                      Catégories
                     </span>
                   </NavLink>
                 </li>
                 <li className="nav-item my-1 px-2">
                   <NavLink
-                    to="/dashboard/demande"
+                    to="/dashboard/maison"
                     className={({ isActive }) =>
                       isActive
                         ? "nav-link active btn btn-primary border rounded-2 mx-auto py-0 text-start pt-1"
@@ -137,7 +138,7 @@ const Dashboard = () => {
                       data-bs-toggle="collapse"
                       data-bs-target="#sidebarMenu.show"
                     >
-                      Demandes d'agrement
+                      Maisons
                     </span>
                   </NavLink>
                 </li>
@@ -304,7 +305,7 @@ const Dashboard = () => {
           <main className="col-md-11 ms-sm-auto col-lg-10 px-md-4 pt-5 h-90 text-small">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/demande" element={<Demande />} />
+              <Route path="/maison" element={<Maison />} />
               <Route path="/categorie" element={<Categorie />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/parametre" element={<Settings />} />

@@ -16,7 +16,7 @@ const Home = () => {
       <div className="row mt-5">
         <div className="col-12 col-md-6 border">
           <p className="text-center fw-bold pt-3">
-            Liste des nouvelles demandes
+            Liste des nouvelles occupants
           </p>
           <Table>
             <TableHeader>
@@ -63,12 +63,12 @@ const Home = () => {
           </Table>
         </div>
         <div className="col-12 col-md-6">
-          <div className="row row-cols-1 row-cols-md-2">
+          <div className="row row-cols-1 row-cols-sm-2">
             {[
-              "Nombre total des demandes",
-              "Dossiers en cours",
-              "Dossiers traités",
-              "Dossiers réjétés",
+              "Nombre total des maisons",
+              "Maisons occupées",
+              "Maisons disponible",
+              "Revenue totale"
             ].map((data, idx) => {
               return (
                 <div className="col mb-5" key={idx}>

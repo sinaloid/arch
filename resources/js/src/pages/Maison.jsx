@@ -2,6 +2,7 @@ import { get } from "jquery";
 import React, { useContext, useEffect, useState } from "react";
 import edit from "../assets/images/icons/edit.png";
 import ModalCategorie from "../Components/ModalCategorie";
+import ModalMaison from "../Components/ModalMaison";
 import ModalSuppression from "../Components/ModalSuppression";
 import PageHeader from "../Components/PageHeader";
 import Table from "../Components/Table";
@@ -11,7 +12,7 @@ import { AppContext } from "../services/context";
 import endPoint from "../services/endPoint";
 import request from "../services/request";
 
-const Categorie = () => {
+const Maison = () => {
   const [datas, setDatas] = useState([]);
   const [editData, setEditData] = useState([]);
   const authCtx = useContext(AppContext);
@@ -26,18 +27,19 @@ const Categorie = () => {
   },[])
 
   const get = () => {
-    request.get(endPoint.categorie,header)
+    request.get(endPoint.maison,header)
     .then((res) => {
       console.log(res.data)
-      setDatas(res.data)
+      setDatas(res.data.maisons)
     }).catch((error) =>{
       console.log(error)
     })
   }
+
   const onDelete = (id) => {
     //console.log(categorie);
     request
-      .delete(endPoint.categorie+"/"+id, header)
+      .delete(endPoint.maison+"/"+id, header)
       .then((res) => {
         console.log(res.data);
         get()
@@ -48,13 +50,15 @@ const Categorie = () => {
   };
   return (
     <>
-      <PageHeader title="Liste des catégories" id={"categorie"}/>
+      <PageHeader title="Liste des catégories" id={"maison"}/>
       <Table>
         <TableHeader>
           <th scope="col" className="border-raduis-left">
             #
           </th>
-          <th scope="col">Nom de la catégorie</th>
+          <th scope="col">Nom</th>
+          <th scope="col">adresse</th>
+          <th scope="col">Prix</th>
           <th scope="col" className="text-center">
             Actions
           </th>
@@ -68,13 +72,15 @@ const Categorie = () => {
                 </td>
                 
                 <td className="fw-bold">{data.nom}</td>
+                <td className="fw-bold">{data.adresse}</td>
+                <td className="fw-bold">{data.prix} Fcfa</td>
                 <td className="text-center">
                   <div className="btn-group">
-                    <div className="d-inline-block mx-1">
+                    <div className="btn-group mx-1">
                       <button 
                         className="btn btn-primary-light"
                         data-bs-toggle="modal"
-                        data-bs-target="#categorie"
+                        data-bs-target="#maison"
                         onClick={(e) => {
                           e.preventDefault()
                           setEditData(data)
@@ -106,11 +112,11 @@ const Categorie = () => {
           })}
         </TableContent>
       </Table>
-      <ModalCategorie id={"categorie"} editData={editData} refresh={get}/>
+      <ModalMaison id={"maison"} editData={editData} refresh={get}/>
       <ModalSuppression id="suppression" editData={editData} refresh={get} onDelete={onDelete}/>
       
     </>
   );
 };
 
-export default Categorie;
+export default Maison;

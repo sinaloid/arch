@@ -1,3 +1,4 @@
+import { useFormik } from "formik";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../services/context";
 import endPoint from "../services/endPoint";
@@ -5,7 +6,8 @@ import request from "../services/request";
 import InputField from "./InputField";
 
 const initCategorie = {
-  libelle: "",
+  nom: "",
+  description: "",
 };
 const ModalCategorie = ({ id, editData = {}, refresh}) => {
   const [categorie, setCategorie] = useState(initCategorie);
@@ -17,22 +19,33 @@ const ModalCategorie = ({ id, editData = {}, refresh}) => {
     },
   };
 
+  console.log(editData)
   useEffect(() =>{
     console.log(editData)
-    setCategorie({libelle:editData.libele})
+    if(editData.id !==undefined){
+      formik.setFieldValue("nom",editData.nom)
+      formik.setFieldValue("description",editData.description)
+    }
+    
   },[editData])
-  const onChange = (name, value) => {
-    setCategorie({
-      ...categorie,
-      [name]: value,
-    });
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const formik = useFormik({
+    initialValues:initCategorie,
+    onSubmit:(values) =>{
+      console.log(values)
+      if(editData.id !== undefined){
+        handleEditeSubmit(values, editData.id)
+      }else{
+        handleSubmit(values)
+      }
+      formik.resetForm()
+    }
+  })
+
+  const handleSubmit = (values) => {
     //console.log(categorie);
     request
-      .post(endPoint.categories, {libele:categorie.libelle}, header)
+      .post(endPoint.categorie, values, header)
       .then((res) => {
         console.log(res.data);
         refresh()
@@ -42,11 +55,10 @@ const ModalCategorie = ({ id, editData = {}, refresh}) => {
       });
   };
 
-  const handleEditeSubmit = (e) => {
-    e.preventDefault();
-    //console.log(categorie);
+  const handleEditeSubmit = (values,id) => {
+
     request
-      .put(endPoint.categories+"/"+editData.id, {libele:categorie.libelle}, header)
+      .put(endPoint.categorie+"/"+id, values, header)
       .then((res) => {
         console.log(res.data);
         refresh()
@@ -75,9 +87,14 @@ const ModalCategorie = ({ id, editData = {}, refresh}) => {
             <InputField
               type={"text"}
               label="Catégorie"
-              name={"libelle"}
-              value={categorie.libelle}
-              onChange={onChange}
+              name={"nom"}
+              formik={formik}
+            />
+            <InputField
+              type={"text"}
+              label="Description"
+              name={"description"}
+              formik={formik}
             />
           </div>
 
@@ -93,7 +110,7 @@ const ModalCategorie = ({ id, editData = {}, refresh}) => {
               type="submit"
               className="btn btn-primary"
               data-bs-dismiss="modal"
-              onClick={ editData.id ? handleEditeSubmit : handleSubmit}
+              onClick={formik.handleSubmit}
             >
               Enregistrer la catégorie
             </button>

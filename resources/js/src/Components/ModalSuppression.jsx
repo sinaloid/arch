@@ -7,7 +7,7 @@ import InputField from "./InputField";
 const initCategorie = {
   libelle: "",
 };
-const ModalSuppression = ({ id, editData = {}, refresh}) => {
+const ModalSuppression = ({ id, editData = {}, refresh, onDelete = () =>{}}) => {
   const [categorie, setCategorie] = useState(initCategorie);
   const authCtx = useContext(AppContext);
   const { user } = authCtx;
@@ -28,19 +28,7 @@ const ModalSuppression = ({ id, editData = {}, refresh}) => {
     });
   };
 
-  const onDelete = (e) => {
-    e.preventDefault();
-    //console.log(categorie);
-    request
-      .delete(endPoint.categories+"/"+editData.id, header)
-      .then((res) => {
-        console.log(res.data);
-        refresh()
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-      });
-  };
+  
 
   return (
     <div className="modal fade" id={id}>
@@ -73,7 +61,10 @@ const ModalSuppression = ({ id, editData = {}, refresh}) => {
               type="submit"
               className="btn btn-primary"
               data-bs-dismiss="modal"
-              onClick={ onDelete}
+              onClick={e => {
+                e.preventDefault()
+                onDelete(editData.id)
+              }}
             >
               Comfirmer la suppression
             </button>

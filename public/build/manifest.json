@@ -13,7 +13,6 @@
       "assets/employe-ba0d19ba.png",
       "assets/rendezvous-a36ef162.png",
       "assets/agenda-b9f31eec.png",
-      "assets/armoiries-805c209f.png",
       "assets/edit-eb484962.png",
       "assets/trie-ea7df758.png",
       "assets/delete-1cbd82bc.png",
@@ -26,7 +25,7 @@
     "css": [
       "assets/app-49dd8eb1.css"
     ],
-    "file": "assets/app-788c02d8.js",
+    "file": "assets/app-9e618a89.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },

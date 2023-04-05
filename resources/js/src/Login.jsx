@@ -42,10 +42,10 @@ const Login = () => {
         onUserChange({
           isAuth: true,
           type: "",
-          //name: res.data.firstname + " " + res.data.lastname,
+          name: res.data.nom + " " + res.data.prenom,
           profile:"",
           //roles: res.data.roles,
-          token: res.data.accessToken,
+          token: res.data.access_token,
           cni:""
         });
           isAuth();
