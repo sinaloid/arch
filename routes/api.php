@@ -23,7 +23,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     //Route::middleware([])->group(function () {
     Route::middleware('auth:api')->group(function () {
-        Route::post('/user', [AuthController::class,'index']);
+        Route::get('/user', [AuthController::class,'index']);
 
         /*Route::get('/user', function (Request $request) {
             return $request->user();
