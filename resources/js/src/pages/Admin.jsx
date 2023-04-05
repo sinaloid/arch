@@ -52,12 +52,12 @@ const Admin = () => {
                 <td>
                   <input type="checkbox" value="selected" />
                 </td>
-                <td>{data.lastname +" "+data.firstname}</td>
+                <td>{data.nom +" "+data.prenom}</td>
                 <td>
-                  <span>+226 {data.phoneNumber}</span> <br />
+                  <span>+226 {"xx xx xx xx"}</span> <br />
                   <span>{data.email}</span> <br />
                 </td>
-                <td>{data.profile}</td>
+                <td>{"image"}</td>
                 <td className="text-center">
                   <div className="btn-group">
                     <div className="d-inline-block mx-1">
@@ -79,9 +79,11 @@ const Admin = () => {
           })}
         </TableContent>
       </Table>
-      <Modal id={"admin"} title={"Creation d'un administrateur"}>
+      {/**
+       * <Modal id={"admin"} title={"Creation d'un administrateur"}>
         <AdminForm />
       </Modal>
+       */}
     </>
   );
 };

@@ -47,4 +47,12 @@ class AuthController extends Controller
 
         return response(['errors' => 'Invalid login credentials'], 401);
     }
+
+    public function index()
+    {
+        $users = User::all();
+        return response()->json(['users' => $maisons], 200);
+    }
+
+
 }
