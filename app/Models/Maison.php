@@ -18,6 +18,12 @@ class Maison extends Model
         'nombre_cuisines',
         'prix',
         'categorie_maison_id',
-        'user_id'
+        'user_id',
+        'longitude',
+        'latitude'
     ];
+
+    public function ressources(){
+        return $this->hasMany(Ressource::class);
+    }
 }

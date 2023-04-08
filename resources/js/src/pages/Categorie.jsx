@@ -9,7 +9,7 @@ import TableContent from "../Components/TableContent";
 import TableHeader from "../Components/TableHeader";
 import { AppContext } from "../services/context";
 import endPoint from "../services/endPoint";
-import request from "../services/request";
+import request, { apiURL } from "../services/request";
 
 const Categorie = () => {
   const [datas, setDatas] = useState([]);
@@ -54,6 +54,7 @@ const Categorie = () => {
           <th scope="col" className="border-raduis-left">
             #
           </th>
+          <th scope="col">Image</th>
           <th scope="col">Nom de la catégorie</th>
           <th scope="col" className="text-center">
             Actions
@@ -67,6 +68,9 @@ const Categorie = () => {
                   <input type="checkbox" value="selected" />
                 </td>
                 
+                <td className="fw-bold">{
+                  data.ressource.length !== 0 && <img width="40px" src={apiURL+"categories/"+data.ressource[0].nom} alt="" />
+                }</td>
                 <td className="fw-bold">{data.nom}</td>
                 <td className="text-center">
                   <div className="btn-group">

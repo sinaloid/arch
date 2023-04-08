@@ -8,18 +8,19 @@ import InputField from "./InputField";
 const initCategorie = {
   nom: "",
   description: "",
+  image: "",
 };
 const ModalCategorie = ({ id, editData = {}, refresh}) => {
-  const [categorie, setCategorie] = useState(initCategorie);
   const authCtx = useContext(AppContext);
   const { user } = authCtx;
   const header = {
     headers: {
       Authorization: `Bearer ${user.token}`,
+      "Content-Type": "multipart/form-data"
     },
   };
 
-  console.log(editData)
+  //console.log(editData)
   useEffect(() =>{
     console.log(editData)
     if(editData.id !==undefined){
@@ -35,6 +36,7 @@ const ModalCategorie = ({ id, editData = {}, refresh}) => {
       console.log(values)
       if(editData.id !== undefined){
         handleEditeSubmit(values, editData.id)
+        
       }else{
         handleSubmit(values)
       }
@@ -56,9 +58,13 @@ const ModalCategorie = ({ id, editData = {}, refresh}) => {
   };
 
   const handleEditeSubmit = (values,id) => {
-
+    const data = new FormData();
+        data.append("nom", values.nom);
+        data.append("description", values.description);
+        data.append("image", values.image);
+        data.append('_method', 'PUT')
     request
-      .put(endPoint.categorie+"/"+id, values, header)
+      .post(endPoint.categorie+"/"+id, data, header)
       .then((res) => {
         console.log(res.data);
         refresh()
@@ -94,6 +100,12 @@ const ModalCategorie = ({ id, editData = {}, refresh}) => {
               type={"text"}
               label="Description"
               name={"description"}
+              formik={formik}
+            />
+            <InputField
+              type={"file"}
+              label="Image de la categorie"
+              name={"image"}
               formik={formik}
             />
           </div>

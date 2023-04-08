@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Maison;
+use App\Models\Ressource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -12,7 +14,7 @@ class MaisonController extends Controller
 {
     public function index()
     {
-        $maisons = Maison::all();
+        $maisons = Maison::with("ressources")->get();
         return response()->json(['maisons' => $maisons], 200);
     }
 
@@ -29,7 +31,7 @@ class MaisonController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-
+        
         $validator = Validator::make($request->all(), [
             'nom' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
@@ -48,6 +50,38 @@ class MaisonController extends Controller
         $request['user_id'] = $user->id;
 
         $maison = Maison::create($request->all());
+
+        // Mettre à jour l'image de la maison si elle a été fournie
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+            foreach($images as $image){
+
+                $imageName = Str::random(10) . '.' . $image->getClientOriginalExtension();
+
+                $path = $image->move(public_path('maisons/images'), $imageName);
+
+                $ressource = new Ressource();
+
+                $ressource->type = "image";
+                $ressource->nom = $imageName;
+                $ressource->maison_id = $maison->id;
+                $ressource->save();
+
+            }
+            
+        }
+
+        if ($request->hasFile('video')) {
+            $video = $request->file('video');
+            $videoName = Str::random(10) . '.' . $video->getClientOriginalExtension();
+            $path = $video->move(public_path('maisons/videos'), $videoName);
+            $ressource = new Ressource();
+            $ressource->type = "video";
+            $ressource->nom = $videoName;
+            $ressource->maison_id = $maison->id;
+            $ressource->save();
+            
+        }
         
 
         return response()->json(['maison' => $maison], 201);

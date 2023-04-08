@@ -14,20 +14,23 @@ const initMaison = {
     nombre_cuisines: "",
     prix: "",
     categorie_maison_id: "",
+    images: "",
+    video: "",
 };
 const ModalMaison = ({ id, editData = {}, refresh }) => {
     const authCtx = useContext(AppContext);
     const { user } = authCtx;
-    const [categories, setCategories] =useState([])
+    const [categories, setCategories] = useState([]);
     const header = {
         headers: {
             Authorization: `Bearer ${user.token}`,
+            "Content-Type": "multipart/form-data"
         },
     };
 
     console.log(editData);
     useEffect(() => {
-      get()
+        get();
         console.log(editData);
         if (editData.id !== undefined) {
             formik.setFieldValue("nom", editData.nom);
@@ -37,7 +40,10 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
             formik.setFieldValue("nombre_douches", editData.nombre_douches);
             formik.setFieldValue("nombre_cuisines", editData.nombre_cuisines);
             formik.setFieldValue("prix", editData.prix);
-            formik.setFieldValue("categorie_maison_id", editData.categorie_maison_id);
+            formik.setFieldValue(
+                "categorie_maison_id",
+                editData.categorie_maison_id
+            );
         }
     }, [editData]);
 
@@ -63,7 +69,7 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
                 refresh();
             })
             .catch((error) => {
-                console.log(error.response.data);
+                console.log(error);
             });
     };
 
@@ -80,14 +86,16 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
     };
 
     const get = () => {
-      request.get(endPoint.categorie,header)
-      .then((res) => {
-        console.log(res.data)
-        setCategories(res.data)
-      }).catch((error) =>{
-        console.log(error)
-      })
-    }
+        request
+            .get(endPoint.categorie, header)
+            .then((res) => {
+                console.log(res.data);
+                setCategories(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     return (
         <div className="modal fade" id={id}>
@@ -152,6 +160,18 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
                             type={"text"}
                             placeholder="Description"
                             name={"description"}
+                            formik={formik}
+                        />
+                        <InputField
+                            type={"multiple-file"}
+                            label="Image de la maison"
+                            name={"images"}
+                            formik={formik}
+                        />
+                        <InputField
+                            type={"file"}
+                            label="Vidéo de la maison"
+                            name={"video"}
                             formik={formik}
                         />
                     </div>

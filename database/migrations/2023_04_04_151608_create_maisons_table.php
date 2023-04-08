@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string("nombre_chambres");
             $table->string("nombre_douches");
             $table->string("nombre_cuisines");
+            $table->string("longitude")->nullable();
+            $table->string("latitude")->nullable();
             $table->string("prix");
 
             $table->unsignedBigInteger('categorie_maison_id');

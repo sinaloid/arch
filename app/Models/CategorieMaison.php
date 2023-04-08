@@ -12,4 +12,7 @@ class CategorieMaison extends Model
         "nom",
         "description"
     ];
+    public function ressource(){
+        return $this->hasMany(Ressource::class);
+    }
 }

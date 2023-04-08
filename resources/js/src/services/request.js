@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const URL = "https://arch.edic-municipalities.com/api/"
+export const apiURL = "https://arch.edic-municipalities.com/"
+//export const apiURL = "http://127.0.0.1:8000/"
 
 const request = axios.create({
-    baseURL: URL,
+    baseURL: apiURL+"api/",
     withCredentials: false,
     headers: {
         'Accept':'application/json',
