@@ -20,7 +20,10 @@ use App\Http\Controllers\MaisonController;
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/register', [AuthController::class,'register']);
     Route::post('/login', [AuthController::class,'login']);
-
+    Route::get('/categories', [CategorieMaisonController::class, 'index']);
+    Route::get('/maisons', [MaisonController::class, 'index']);
+    Route::get('/maisons/{id}', [MaisonController::class, 'show']);
+    Route::get('/categories/{id}', [CategorieMaisonController::class, 'show']);
     //Route::middleware([])->group(function () {
     Route::middleware('auth:api')->group(function () {
         Route::get('/user', [AuthController::class,'index']);
