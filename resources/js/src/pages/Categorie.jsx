@@ -30,6 +30,7 @@ const Categorie = () => {
     .then((res) => {
       console.log(res.data)
       setDatas(res.data)
+      setEditData({})
     }).catch((error) =>{
       console.log(error)
     })

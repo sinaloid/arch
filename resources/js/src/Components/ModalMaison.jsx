@@ -28,7 +28,7 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
         },
     };
 
-    console.log(editData);
+    //console.log(editData);
     useEffect(() => {
         get();
         console.log(editData);
@@ -50,9 +50,11 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
     const formik = useFormik({
         initialValues: initMaison,
         onSubmit: (values) => {
+            console.log("values");
             console.log(values);
             if (editData.id !== undefined) {
                 handleEditeSubmit(values, editData.id);
+                
             } else {
                 handleSubmit(values);
             }
@@ -74,8 +76,9 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
     };
 
     const handleEditeSubmit = (values, id) => {
+        values._method = "PUT"
         request
-            .put(endPoint.maison + "/" + id, values, header)
+            .post(endPoint.maison + "/" + id, values, header)
             .then((res) => {
                 console.log(res.data);
                 refresh();

@@ -31,6 +31,7 @@ const Maison = () => {
     .then((res) => {
       console.log(res.data)
       setDatas(res.data.maisons)
+      setEditData({})
     }).catch((error) =>{
       console.log(error)
     })

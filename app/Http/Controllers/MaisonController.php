@@ -38,8 +38,8 @@ class MaisonController extends Controller
             'adresse' => 'required|string|max:255',
             'description' => 'required|string',
             'nombre_chambres' => 'required|integer|min:1',
-            'nombre_douches' => 'required|integer|min:1',
-            'nombre_cuisines' => 'required|integer|min:1',
+            'nombre_douches' => 'nullable|integer|min:0',
+            'nombre_cuisines' => 'nullable|integer|min:0',
             'prix' => 'required|numeric|min:0',
             'categorie_maison_id' => 'required|exists:categorie_maisons,id'
         ]);
@@ -96,8 +96,8 @@ class MaisonController extends Controller
             'adresse' => 'required|string|max:255',
             'description' => 'required|string',
             'nombre_chambres' => 'required|integer|min:1',
-            'nombre_douches' => 'required|integer|min:1',
-            'nombre_cuisines' => 'required|integer|min:1',
+            'nombre_douches' => 'nullable|integer|min:0',
+            'nombre_cuisines' => 'nullable|integer|min:0',
             'prix' => 'required|numeric|min:0',
             'categorie_maison_id' => 'required|exists:categorie_maisons,id'
         ]);
