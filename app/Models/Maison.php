@@ -26,4 +26,8 @@ class Maison extends Model
     public function ressources(){
         return $this->hasMany(Ressource::class);
     }
+
+    public function categorieMaison(){
+        return $this->belongsTo(CategorieMaison::class);
+    }
 }

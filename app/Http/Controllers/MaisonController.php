@@ -14,7 +14,7 @@ class MaisonController extends Controller
 {
     public function index()
     {
-        $maisons = Maison::with("ressources")->get();
+        $maisons = Maison::with("ressources","categorieMaison")->get();
         return response()->json(['maisons' => $maisons], 200);
     }
 

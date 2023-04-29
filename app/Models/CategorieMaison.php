@@ -15,4 +15,9 @@ class CategorieMaison extends Model
     public function ressource(){
         return $this->hasMany(Ressource::class);
     }
+    
+    public function maisons(){
+        return $this->hasMany(Maison::class);
+    }
+
 }
