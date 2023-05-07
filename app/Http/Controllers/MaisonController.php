@@ -21,7 +21,7 @@ class MaisonController extends Controller
     public function show($id)
     {
         //$maison = Maison::find($id);
-        $maison = Maison::with("ressources")->find($id);
+        $maison = Maison::with("ressources","categorieMaison")->find($id);
         if ($maison) {
             return response()->json(['maison' => $maison], 200);
         } else {

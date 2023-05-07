@@ -305,7 +305,7 @@ const Dashboard = () => {
           <main className="col-md-11 ms-sm-auto col-lg-10 px-md-4 pt-5 h-90 text-small">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/maison" element={<Maison />} />
+              <Route path="/maison/*" element={<Maison />} />
               <Route path="/categorie" element={<Categorie />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/parametre" element={<Settings />} />

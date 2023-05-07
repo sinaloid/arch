@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategorieMaisonController;
 use App\Http\Controllers\MaisonController;
+use App\Http\Controllers\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,12 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('/maisons', [MaisonController::class, 'index']);
     Route::get('/maisons/{id}', [MaisonController::class, 'show']);
     Route::get('/categories/{id}', [CategorieMaisonController::class, 'show']);
+    Route::get('/communes', [CountryController::class,'index']);
+
     //Route::middleware([])->group(function () {
     Route::middleware('auth:api')->group(function () {
         Route::get('/user', [AuthController::class,'index']);
+        Route::get('/createCountry', [CountryController::class,'createCountry']);
 
         /*Route::get('/user', function (Request $request) {
             return $request->user();
