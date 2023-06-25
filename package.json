@@ -28,6 +28,8 @@
     },
     "dependencies": {
         "formik": "^2.2.9",
-        "yup": "^1.0.2"
+        "yup": "^1.0.2",
+        "leaflet": "^1.9.3",
+        "react-leaflet": "^4.2.1"
     }
 }

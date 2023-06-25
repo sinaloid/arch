@@ -26,7 +26,7 @@ class CategorieMaisonController extends Controller
         $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         
         // Créer la nouvelle catégorie de maison

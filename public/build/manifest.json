@@ -1,6 +1,18 @@
 {
+  "node_modules/leaflet/dist/images/layers-2x.png": {
+    "file": "assets/layers-2x-066daca8.png",
+    "src": "node_modules/leaflet/dist/images/layers-2x.png"
+  },
+  "node_modules/leaflet/dist/images/layers.png": {
+    "file": "assets/layers-1dbbe9d0.png",
+    "src": "node_modules/leaflet/dist/images/layers.png"
+  },
+  "node_modules/leaflet/dist/images/marker-icon.png": {
+    "file": "assets/marker-icon-574c3a5c.png",
+    "src": "node_modules/leaflet/dist/images/marker-icon.png"
+  },
   "resources/js/app.css": {
-    "file": "assets/app-49dd8eb1.css",
+    "file": "assets/app-7d484512.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -20,12 +32,16 @@
       "assets/next-a142b8bc.png",
       "assets/profile-3e1cc753.png",
       "assets/delete-638018b0.png",
-      "assets/files-icon-f30f6b0a.png"
+      "assets/files-icon-f30f6b0a.png",
+      "assets/gps-e5507b9b.svg",
+      "assets/layers-1dbbe9d0.png",
+      "assets/layers-2x-066daca8.png",
+      "assets/marker-icon-574c3a5c.png"
     ],
     "css": [
-      "assets/app-49dd8eb1.css"
+      "assets/app-7d484512.css"
     ],
-    "file": "assets/app-4bcdc68b.js",
+    "file": "assets/app-ab381ed8.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -88,6 +104,10 @@
   "resources/js/src/assets/imgs/employe.png": {
     "file": "assets/employe-ba0d19ba.png",
     "src": "resources/js/src/assets/imgs/employe.png"
+  },
+  "resources/js/src/assets/imgs/gps.svg": {
+    "file": "assets/gps-e5507b9b.svg",
+    "src": "resources/js/src/assets/imgs/gps.svg"
   },
   "resources/js/src/assets/imgs/home.png": {
     "file": "assets/home-4ed7d2c9.png",

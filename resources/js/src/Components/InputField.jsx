@@ -160,7 +160,7 @@ const InputField = ({
                     {options.map((data, idx) => {
                         return (
                             <option key={idx} value={data.id}>
-                                {data.nom}
+                                {data.nom ? data.nom : data.commune_name}
                             </option>
                         );
                     })}

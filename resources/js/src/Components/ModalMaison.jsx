@@ -21,6 +21,7 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
     const authCtx = useContext(AppContext);
     const { user } = authCtx;
     const [categories, setCategories] = useState([]);
+    const [communes, setCommunes] = useState([]);
     const header = {
         headers: {
             Authorization: `Bearer ${user.token}`,
@@ -43,6 +44,10 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
             formik.setFieldValue(
                 "categorie_maison_id",
                 editData.categorie_maison_id
+            );
+            formik.setFieldValue(
+                "commune_id",
+                editData.commune_id
             );
         }
     }, [editData]);
@@ -94,11 +99,25 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
             .then((res) => {
                 console.log(res.data);
                 setCategories(res.data);
+                getCities()
             })
             .catch((error) => {
                 console.log(error);
             });
     };
+
+    const getCities = () => {
+        request
+            .get(endPoint.communes, header)
+            .then((res) => {
+                console.log(res.data);
+                setCommunes(res.data.communes);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
 
     return (
         <div className="modal fade" id={id}>
@@ -118,7 +137,7 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
                     <div className="modal-body">
                         <InputField
                             type={"text"}
-                            placeholder="Nom"
+                            placeholder="Libellé"
                             name={"nom"}
                             formik={formik}
                         />
@@ -158,6 +177,13 @@ const ModalMaison = ({ id, editData = {}, refresh }) => {
                             name={"categorie_maison_id"}
                             formik={formik}
                             options={categories}
+                        />
+                        <InputField
+                            type={"select"}
+                            placeholder="Sélectionnez une ville"
+                            name={"commune_id"}
+                            formik={formik}
+                            options={communes}
                         />
                         <InputField
                             type={"text"}

@@ -53,14 +53,15 @@ const ListMaison = () => {
   };
   return (
     <>
-      <PageHeader title="Liste des catégories" id={"maison"}/>
+      <PageHeader title="Liste des maisons" id={"maison"}/>
       <Table>
         <TableHeader>
           <th scope="col" className="border-raduis-left">
             #
           </th>
-          <th scope="col">Nom</th>
-          <th scope="col">adresse</th>
+          <th scope="col">Libellé</th>
+          <th scope="col">Ville</th>
+          <th scope="col">Adresse</th>
           <th scope="col">Prix</th>
           <th scope="col" className="text-center">
             Actions
@@ -75,6 +76,7 @@ const ListMaison = () => {
                 </td>
                 
                 <td className="fw-bold">{data.nom}</td>
+                <td className="fw-bold">{data.commune?.commune_name}</td>
                 <td className="fw-bold">{data.adresse}</td>
                 <td className="fw-bold">{data.prix} Fcfa</td>
                 <td className="text-center">

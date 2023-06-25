@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Countries\Commune;
 
 class Maison extends Model
 {
@@ -19,12 +20,18 @@ class Maison extends Model
         'prix',
         'categorie_maison_id',
         'user_id',
+        'commune_id',
+        'secteur',
         'longitude',
         'latitude'
     ];
 
     public function ressources(){
         return $this->hasMany(Ressource::class);
+    }
+
+    public function commune(){
+        return $this->belongsTo(Commune::class);
     }
 
     public function categorieMaison(){

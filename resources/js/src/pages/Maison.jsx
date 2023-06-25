@@ -6,12 +6,12 @@ import ListMaison from "./sous-pages/ListMaison";
 
 const Maison = () => {
   return (
-    <>
+    <div className="container">
       <Routes>
         <Route path="/" element={<ListMaison />} />
         <Route path="/detail/:id" element={<DetailMaison />} />
       </Routes>
-    </>
+    </div>
   );
 };
 

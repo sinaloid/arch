@@ -5,6 +5,7 @@ const endPoint = {
     "users":"user",
     "categorie":"categorie",
     "maison":"maison",
+    "communes":"communes"
 
 }
 

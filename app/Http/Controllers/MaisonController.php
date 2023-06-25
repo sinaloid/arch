@@ -14,14 +14,14 @@ class MaisonController extends Controller
 {
     public function index()
     {
-        $maisons = Maison::with("ressources","categorieMaison")->get();
+        $maisons = Maison::with("ressources","categorieMaison","commune")->get();
         return response()->json(['maisons' => $maisons], 200);
     }
 
     public function show($id)
     {
         //$maison = Maison::find($id);
-        $maison = Maison::with("ressources","categorieMaison")->find($id);
+        $maison = Maison::with("ressources","categorieMaison","commune")->find($id);
         if ($maison) {
             return response()->json(['maison' => $maison], 200);
         } else {
@@ -41,7 +41,8 @@ class MaisonController extends Controller
             'nombre_douches' => 'nullable|integer|min:0',
             'nombre_cuisines' => 'nullable|integer|min:0',
             'prix' => 'required|numeric|min:0',
-            'categorie_maison_id' => 'required|exists:categorie_maisons,id'
+            'categorie_maison_id' => 'required|exists:categorie_maisons,id',
+            'commune_id' => 'required|exists:communes,id'
         ]);
 
         if ($validator->fails()) {

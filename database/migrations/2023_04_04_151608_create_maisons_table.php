@@ -21,10 +21,19 @@ return new class extends Migration
             $table->string("nombre_chambres");
             $table->string("nombre_douches");
             $table->string("nombre_cuisines");
+            $table->string("secteur")->nullable();
             $table->string("longitude")->nullable();
             $table->string("latitude")->nullable();
+            $table->string("etat")->nullable();
             $table->string("prix");
 
+            $table->unsignedBigInteger('commune_id');
+            $table->foreign('commune_id')
+                    ->references('id')
+                    ->on('communes')
+                    ->onDelete('restrict')
+                    ->onUpdate('restrict');
+                    
             $table->unsignedBigInteger('categorie_maison_id');
             $table->foreign('categorie_maison_id')
                     ->references('id')
