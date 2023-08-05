@@ -19,11 +19,11 @@ class MaisonController extends Controller
                 ["commune_id","=",$commune_id],
                 ["categorie_maison_id","=",$categorie_id],
             ])->get();
-        }elseif($commune_id !== "" && $categorie_id === ""){
+        }elseif($commune_id !== "" && $categorie_id === "null"){
             $maisons = Maison::with("ressources","categorieMaison","commune")->where([
                 ["commune_id","=",$commune_id],
             ])->get();
-        }elseif($commune_id === "" && $categorie_id !== ""){
+        }elseif($commune_id === "null" && $categorie_id !== ""){
             $maisons = Maison::with("ressources","categorieMaison","commune")->where([
                 ["categorie_maison_id","=",$categorie_id],
             ])->get();
