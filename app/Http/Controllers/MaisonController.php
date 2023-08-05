@@ -14,21 +14,22 @@ class MaisonController extends Controller
 {
     public function index($commune_id = "", $categorie_id = "")
     {
-        if($commune_id !== "" && $categorie_id !==""){
-            $maisons = Maison::with("ressources","categorieMaison","commune")->where([
-                ["commune_id","=",$commune_id],
-                ["categorie_maison_id","=",$categorie_id],
-            ])->get();
-        }elseif($commune_id !== "" && $categorie_id === "null"){
+        if($commune_id === "" && $categorie_id ===""){
+            $maisons = Maison::with("ressources","categorieMaison","commune")->get();
+            
+        }elseif($commune_id !== "null" && $categorie_id === "null"){
             $maisons = Maison::with("ressources","categorieMaison","commune")->where([
                 ["commune_id","=",$commune_id],
             ])->get();
-        }elseif($commune_id === "null" && $categorie_id !== ""){
+        }elseif($commune_id === "null" && $categorie_id !== "null"){
             $maisons = Maison::with("ressources","categorieMaison","commune")->where([
                 ["categorie_maison_id","=",$categorie_id],
             ])->get();
         }else{
-            $maisons = Maison::with("ressources","categorieMaison","commune")->get();
+            $maisons = Maison::with("ressources","categorieMaison","commune")->where([
+                ["commune_id","=",$commune_id],
+                ["categorie_maison_id","=",$categorie_id],
+            ])->get();
         }
 
         return response()->json(['maisons' => $maisons], 200);
