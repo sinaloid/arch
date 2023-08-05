@@ -24,7 +24,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('/categories', [CategorieMaisonController::class, 'index']);
     Route::get('/maisons', [MaisonController::class, 'index']);
     Route::get('/maisons/{commune_id?}/{categorie_id?}', [MaisonController::class, 'index']);
-    Route::get('/maisons/{id}', [MaisonController::class, 'show']);
+    Route::get('/maisonById/{id}', [MaisonController::class, 'show']);
     Route::get('/categories/{id}', [CategorieMaisonController::class, 'show']);
     Route::get('/communes', [CountryController::class,'index']);
 
