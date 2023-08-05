@@ -12,9 +12,16 @@ use Illuminate\Validation\ValidationException;
 
 class MaisonController extends Controller
 {
-    public function index()
+    public function index($commune_id = "", $categorie_id = "")
     {
-        $maisons = Maison::with("ressources","categorieMaison","commune")->get();
+        if($commune_id !== "" && $categorie_id !==""){
+            $maisons = Maison::with("ressources","categorieMaison","commune")->where([
+                ["commune_id","=",$commune_id],
+                ["categorie_maison_id","=",$categorie_id],
+            ])->get();
+        }else{
+            $maisons = Maison::with("ressources","categorieMaison","commune")->get();
+        }
         return response()->json(['maisons' => $maisons], 200);
     }
 
