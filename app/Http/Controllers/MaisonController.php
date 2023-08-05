@@ -19,9 +19,18 @@ class MaisonController extends Controller
                 ["commune_id","=",$commune_id],
                 ["categorie_maison_id","=",$categorie_id],
             ])->get();
+        }elseif($commune_id !== "" && $categorie_id === ""){
+            $maisons = Maison::with("ressources","categorieMaison","commune")->where([
+                ["commune_id","=",$commune_id],
+            ])->get();
+        }elseif($commune_id === "" && $categorie_id !== ""){
+            $maisons = Maison::with("ressources","categorieMaison","commune")->where([
+                ["categorie_maison_id","=",$categorie_id],
+            ])->get();
         }else{
             $maisons = Maison::with("ressources","categorieMaison","commune")->get();
         }
+
         return response()->json(['maisons' => $maisons], 200);
     }
 
